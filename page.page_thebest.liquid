@@ -1,0 +1,453 @@
+<div class="grid">
+
+  <div class="grid__item post-large--two-thirds push--post-large--one-sixth">
+
+    <div class="section-header">
+      
+    </div>
+    <div class="rte">
+      {{ page.content }}
+    </div>
+
+    
+    
+
+  </div>
+
+</div><div class="grid">
+
+  <div class="grid__item post-large--two-thirds push--post-large--one-sixth">
+
+    <div class="section-header">
+      <h1 class="section-header--title">{{ page.title }}</h1>
+    </div>
+
+    <div class="rte">
+      {{ page.content }}
+       <img src="//cdn.shopify.com/s/files/1/1418/8932/files/Life_Doesn_t_1.png?11193330769462416586" alt="" />
+    <div style="float: right;" class="mimg-box">
+          <img alt="" src="https://cdn.shopify.com/s/files/1/1418/8932/files/10percentoff.png?17199472514774593469" style="margin-left: 1opx; float: right;" width="411" height="411" />
+          <div class="rform">
+            
+              
+              {% form 'customer' %}
+              {{ form.errors | default_errors }}
+              {% if form.posted_successfully? %}
+              <script>
+                $(function() {
+                  window.location = '/pages/best-reading-glasses-ever-coupon-code';
+                  
+                });
+              </script>
+              <p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+              {% else %}
+
+              <script>
+                $(function() {
+                  
+                  
+                  $("#submit_form23").on("click",function(e){
+                    e.preventDefault();
+                    var $this=$(this).closest("form");
+                     var fname=$this.find(".ContactFormFirstName").val();
+                    var lname=$this.find(".ContactFormLastName").val();
+                    var zipcode=$this.find(".ContactFormZipcode").val();
+                    //var birthday=$this.find(".ContactFormBirthday").val();
+                    var address=$this.find(".ContactFormAddress").val();
+                    var address2=$this.find(".ContactFormAddress2").val();
+                    var city=$this.find(".ContactFormCity").val();
+                    var state=$this.find(".state").val();
+                    var email=$this.find(".ContactFormEmail").val();
+                    var phone=$this.find(".ContactFormPhone").val();
+                    if(fname==""){
+                      $(".show-error").html('<p class="note form-error">Please fill out Required Field.</p>');
+                      $this.find(".ContactFormFirstName").focus();
+                      return false;
+                    }
+                    if(lname==""){
+                      $(".show-error").html('<p class="note form-error">Please fill out Required Field.</p>');
+                      $this.find(".ContactFormLastName").focus();
+                      return false;
+                    }
+                    if(address==""){
+                      $(".show-error").html('<p class="note form-error">Please fill out Required Field.</p>');
+                      $this.find(".ContactFormAddress").focus();
+                      return false;
+                    }
+                    
+                    if(city==""){
+                      $(".show-error").html('<p class="note form-error">Please fill out Required Field.</p>');
+                      $this.find(".ContactFormCity").focus();
+                      return false;
+                    }
+                    if(state==""){
+                      $(".show-error").html('<p class="note form-error">Please fill out Required Field.</p>');
+                      $this.find(".state").focus();
+                      return false;
+                    }
+                    if(zipcode==""){
+                      $(".show-error").html('<p class="note form-error">Please fill out Required Field.</p>');
+                      $this.find(".ContactFormZipcode").focus();
+                      return false;
+                    }else{
+                      var regex = /[0-9]{5}/gm;
+                      var str = zipcode;
+                      var m;
+                      var matchz=false;
+
+                      while ((m = regex.exec(str)) !== null) {
+                          // This is necessary to avoid infinite loops with zero-width matches
+                          if (m.index === regex.lastIndex) {
+                              regex.lastIndex++;
+                          }
+
+                          // The result can be accessed through the `m`-variable.
+                          m.forEach((match, groupIndex) => {
+                              matchz=true;
+                            if(zipcode.length>5){
+                              matchz=false;
+                            }
+                              console.log(`Found match, group ${groupIndex}: ${match}`);
+                          });
+                      }
+                      if(matchz==false){
+                        $(".show-error").html('<p class="note form-error">Please Match Request Format</p>');
+                        $this.find(".ContactFormZipcode").focus();
+                        return false;
+                      }
+                    }
+
+                    if(email==""){
+                      $(".show-error").html('<p class="note form-error">Please fill out Required Field.</p>');
+                      $this.find(".ContactFormEmail").focus();
+                      return false;
+                    }else{
+
+                      var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                      if(emailReg.test(email)===false){
+                        $(".show-error").html('<p class="note form-error">Please Match Request Format</p>');
+                        $this.find(".ContactFormEmail").focus();
+                        return false;
+                      }
+
+                    }
+
+                    if(phone==""){
+                      $(".show-error").html('<p class="note form-error">Please fill out Required Field.</p>');
+                      $this.find(".ContactFormPhone").focus();
+                      return false;
+                    }else{
+                      var regex = /^\d{3}-\d{3}-\d{4}$/gm;
+                      var str = phone;
+                      var m;
+                      var matchz=false;
+
+                      while ((m = regex.exec(str)) !== null) {
+                          // This is necessary to avoid infinite loops with zero-width matches
+                          if (m.index === regex.lastIndex) {
+                              regex.lastIndex++;
+                          }
+
+                          // The result can be accessed through the `m`-variable.
+                          m.forEach((match, groupIndex) => {
+                              matchz=true;
+
+                              console.log(`Found match, group ${groupIndex}: ${match}`);
+                          });
+                      }
+                      if(matchz==false){
+                        $(".show-error").html('<p class="note form-error">Please Match Request Format</p>');
+                        $this.find(".ContactFormPhone").focus();
+                        return false;
+                      }
+                    }
+
+
+                   /* if(birthday==""){
+                      $(".show-error").html('<p class="note form-error">Please fill out Required Field.</p>');
+                      $this.find(".ContactFormBirthday").focus();
+                      return false;
+                    }else{
+                      var regex = /(0[1-9]|1[012]).(0[1-9]|1[0-9]|2[0-9]|3[01]).[0-9]{4}/gm;
+                      var str = birthday;
+                      var m;
+                      var matchz=false;
+
+                      while ((m = regex.exec(str)) !== null) {
+                          // This is necessary to avoid infinite loops with zero-width matches
+                          if (m.index === regex.lastIndex) {
+                              regex.lastIndex++;
+                          }
+
+                          // The result can be accessed through the `m`-variable.
+                          m.forEach((match, groupIndex) => {
+                              matchz=true;
+
+                              console.log(`Found match, group ${groupIndex}: ${match}`);
+                          });
+                      }
+                      if(matchz==false){
+                        $(".show-error").html('<p class="note form-error">Please Match Request Format</p>');
+                        $this.find(".ContactFormBirthday").focus();
+                        return false;
+                      }
+                    } */
+
+                    $(".show-error").html('');
+                    formData = {
+                        u: "e38a229795cc0c18578b2e153",
+                        id: "3e54b67784",
+                        FNAME: fname,
+                        LNAME: lname,
+                        ZIPCODE: zipcode,
+                        //BIRTHDAY: birthday,
+                        EMAIL: email,
+                        PHONE: phone,
+                        ADDRESS: address,
+                        ADDRESS2: address2,
+                        CSTATE: state,
+                        CITY: city,
+
+                    };
+                      $.ajax({
+                        url: "https://HelloClassy.us17.list-manage.com/subscribe/post-json?c=?",
+                        type: "GET",
+                        crossDomain: true,
+                        contentType: 'application/json',
+                        data: formData,
+                        dataType: "json",
+                        success: function(data) {
+
+                          if(data.result=="error"){}else{}
+              console.log("ok");
+                          $.ajax({
+                              url: "http://helloclassy1.com/mail-best-reading.php",
+                              type: "GET",
+                              crossDomain: true,
+                              contentType: 'application/json',
+                              data: {
+                                sent_email: email,
+                                'request':'ajax',
+                                 pass: '123tj12'
+                              },
+                              dataType: "json",
+                              success: function(data) {
+                                $this.submit();
+                                return true;
+                              },
+                              error: function() {
+                                return false;
+                              }
+                          });
+
+                          return true;
+                            //success handler
+                        },
+                        error: function() {
+                          return false;
+                            //error handler
+                        }
+                    });
+                  });
+
+                });
+              </script>
+              <input type="hidden" name="contact[tags]" value="Win it bottom"> 
+              <div class="formname">
+                <input type="text" placeholder="FIRST NAME" class="ContactFormFirstName" id="ContactFormFirstName" name="contact[FirstName]" required="required">
+              </div>
+              <div class="formname">
+                <input type="text" placeholder="LAST NAME" class="ContactFormLastName" id="ContactFormLastName" name="contact[LastName]" required="required"/>
+              </div>
+              <div class="formadd">
+                <input type="text" placeholder="ADDRESS" class="ContactFormAddress" id="ContactFormAddress" name="contact[Address]" required="required">
+              </div>
+              <div class="formadd">
+                <input type="text" placeholder="ADDRESS 2" class="ContactFormAddress2" id="ContactFormAddress2" name="contact[Address2]" >
+              </div>
+              <div class="formadd">
+                <input type="text" placeholder="CITY" class="ContactFormCity" id="ContactFormCity" name="contact[City]" required="required">
+              </div>
+              <div class="formadd">
+                {%comment%}
+                <input type="text" placeholder="STATE" class="ContactFormState" id="ContactFormState" name="contact[State]" required="required">
+                {%endcomment%}
+                <select name="state" class="state" id="state" name="contact[State]" required="required">
+                  <option value="" selected="selected">STATE</option>
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District Of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+                </select>
+              </div>
+              <div class="formadd">
+                <input type="text" placeholder="ZIP CODE" pattern="[0-9]{5}" class="ContactFormZipcode" id="ContactFormZipcode" name="contact[Zipcode]" required="required">
+              </div>
+              <div class="formadd">
+                <input type="email" placeholder="EMAIL ADDRESS" class="ContactFormEmail" id="ContactFormEmail" name="contact[email]" required="required">
+              </div>
+              <div class="formname width-100">
+                <input type="tel" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="PHONE XXX-XXX-XXXX" class="ContactFormPhone" id="ContactFormPhone" name="contact[Phone]" required="required">
+              </div>
+<!--               <div class="formname">
+                <input type="text"  pattern="(0[1-9]|1[012]).(0[1-9]|1[0-9]|2[0-9]|3[01]).[0-9]{4}" placeholder="BIRTHDAY MM-DD-YYYY" class="ContactFormBirthday" id="ContactFormBirthday" name="contact[Birthday]" required="required">
+              </div> -->
+            <div style="clear:both;"></div>
+              <span class="show-error"></span>
+              <div class="formsubmit">
+                <input class="submit" id="submit_form23" type="submit" value="Click Here!">
+              </div>
+
+
+              {% endif %}
+              {% endform %}
+          </div>
+      </div>
+      <span><img style="height:42px; width:42px" alt="" src="https://cdn.shopify.com/s/files/1/1418/8932/files/PinkFlower1.fw.png?11627759284878664423" /> </span>
+      <span style="font-size: 28px; font-family: lilita one;">  CRANK UP THE "WOW"!<br />
+      </span><img alt="" src="https://cdn.shopify.com/s/files/1/1418/8932/files/Classy_Points_3_icon.png?v=1516686746" /> <strong>
+      <span style="color: #0096bb; font-size: 17px; font-family: Arvo;">Over 40 Fabulous Colors and Styles!</span>
+      </strong>
+      <br /> 
+      <strong>The Best Readers Ever! </strong>  Turn heads and polish off any look with CLASSY Readers and Chains!
+      <br />
+      <img alt="" src="https://cdn.shopify.com/s/files/1/1418/8932/files/Classy_Points_3_icon.png?v=1516686746" />
+      <strong><span style="color: #0096bb; font-size: 17px; font-family: Arvo;">Not Anything Like Granny's! </span>
+        <br />
+        Yes, Ladies, Reading Glasses CAN Be Gorgeous!<br />
+      </strong>Wear your readers like jewelry to create the ultimate style statement for any outfit!<br />
+      <img alt="" src="https://cdn.shopify.com/s/files/1/1418/8932/files/Classy_Points_3_icon.png?v=1516686746" /> 
+      <strong><span style="color: #0096bb; font-size: 17px; font-family: Arvo;">Never Lose Your Readers Again!</span>
+        <br /></strong><strong>You Need Your Reading Glasses NOW! </strong> These fabulous CLASSY reading glasses and trendy chains are fashionable, reliable and impossible to lose!</span>
+    <center>
+        <img src="//cdn.shopify.com/s/files/1/1418/8932/files/pinkimage.fw.png?149542196448821347180" alt="" width="422" height="246" />
+      </center>
+      
+    </div>
+    
+
+  </div>
+
+</div>
+<style type="text/css">
+  .mimg-box{
+    position:relative;
+  }
+  .rform{
+    position: absolute;
+    top: 180px;
+    left: 0px;
+    padding: 0px 40px;
+  }
+  .rform input{
+    border-radius: 10px;
+    color: grey;
+    background-color: transparent;
+    padding: 4px;
+    text-align: center;
+    border: 1px solid grey !important;
+    margin-bottom: 4px;
+  }
+  .rform select {
+    border-radius: 10px;
+    color: grey;
+    background-color: transparent;
+    padding: 4px;
+    text-align: center;
+    border: 1px solid grey !important;
+    margin-bottom: 4px;
+ }
+ .rform #submit_form23{
+    padding: 22px 54px;
+    background-color: #000;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 13px;
+  }
+  .rform .width-100{
+    width:100%;
+  }
+  .rform ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: grey;
+    opacity: 1; /* Firefox */
+  }
+
+  .rform :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: grey;
+  }
+
+  .rform ::-ms-input-placeholder { /* Microsoft Edge */
+      color: grey;
+  }
+  .rform .show-error{
+    position: absolute;
+    bottom: 66px;
+    margin-left: 87px;
+  }
+  .rform .show-error p{    
+    padding: 0px 20px;
+    border-radius: 7px;
+    font-size: 12px;
+  }
+  .top-text{
+        font-size: 13px;
+    font-weight: bold;
+    margin-top: -20px;
+  }
+  .top-text img{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 8px;
+  }
+  .top-text span{
+    font-size: 14px;
+  }
+</style>
